@@ -1,0 +1,31 @@
+@extends('base')
+
+@section('title', 'Se connecter')
+@section('content')
+    <div class="mt-4 container">
+        <h1>@yield('title')</h1>
+
+        @include('shared.flash')
+
+        <form action="{{ route('login') }}" method="post" class="vstack gap-3">
+            @csrf
+            @include('shared.input', [
+                'type' => 'email',
+                'class' => 'col',
+                'label' => 'Email',
+                'name' => 'email',
+            ])
+            @include('shared.input', [
+                'type' => 'password',
+                'class' => 'col',
+                'label' => 'Mot de passe',
+                'name' => 'password',
+            ])
+            <div>
+                <button class="bg-blue-500 rounded text-white py-2 px-2">
+                    Se connecter
+                </button>
+            </div>
+        </form>
+    </div>
+@endsection
